@@ -10,6 +10,12 @@ class Todo(models.Model):
     title = models.CharField(max_length=120)
     description = models.TextField(default = "")
     completed = models.CharField(max_length = 1, choices = TASK_COMPLETION,default='N')
+    priority = models.IntegerField(default= 0)
+    date = models.DateTimeField(null=True)
 
     def _str_(self):
         return self.title
+    
+    
+    class Meta:
+        ordering = ['-priority']
